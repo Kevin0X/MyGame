@@ -1906,6 +1906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 50
   headPos: {fileID: 4969686220834372}
+  attackDir: 1.5
 --- !u!136 &136243831958675860
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -89,6 +89,8 @@ GameObject:
   m_Component:
   - component: {fileID: 224848856924664760}
   - component: {fileID: 114414962653369014}
+  - component: {fileID: 222645579807130912}
+  - component: {fileID: 114732272731716468}
   m_Layer: 5
   m_Name: PnlJoystick
   m_TagString: Untagged
@@ -112,7 +114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1852633429117554
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,8 +231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRadius: 45
-  heroPos: {x: -16, y: -10, z: 30}
-  speed: 2.5
 --- !u!114 &114510330372299522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,6 +421,32 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114732272731716468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799014140871662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!114 &114936774916553740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -482,6 +508,13 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1676059177546748}
+  m_CullTransparentMesh: 0
+--- !u!222 &222645579807130912
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799014140871662}
   m_CullTransparentMesh: 0
 --- !u!222 &222707226500998274
 CanvasRenderer:

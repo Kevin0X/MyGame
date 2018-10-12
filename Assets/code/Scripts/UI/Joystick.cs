@@ -3,13 +3,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Joystick : MonoBehaviour, IDragHandler, IEndDragHandler{
+public class Joystick : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler{
 
     [SerializeField]
-    private float maxRadius = 100;
+    private float maxRadius = 45;
 
     private HeroData HeroData;
 
+    private Transform JoystickBg;
     private Transform JoystickControl;
     private Button BtnAttack;
     private Button BtnSwitchWeapon;
@@ -30,38 +31,18 @@ public class Joystick : MonoBehaviour, IDragHandler, IEndDragHandler{
     {
         Transform self = transform;
 
+        JoystickBg          = self.Find("Joystick/ImgC_JoystickBg");
         JoystickControl     = self.Find("Joystick/ImgC_JoystickBg/ImgC_JoystickControl");
         BtnAttack           = self.Find("BtnAttack").GetComponent<Button>();
         BtnSwitchWeapon     = self.Find("BtnSwitchWeapon").GetComponent<Button>();
 
         BtnAttack.onClick.AddListener(() => { HandlerBtnAttack(); });
         BtnSwitchWeapon.onClick.AddListener(() => { HandlerBtnSwitchWeapon(); });
-
-        moveBackPos = JoystickControl.position;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            HandlerBtnAttack();
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-
-        }
+       
     }
 
     private void HandlerBtnAttack()
@@ -74,6 +55,13 @@ public class Joystick : MonoBehaviour, IDragHandler, IEndDragHandler{
     {
         //触发切换武器按钮按下事件
         Messenger.Broadcast(Constant.EventName.SWITCH_WEAPON);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        JoystickBg.gameObject.SetActive(true);
+        JoystickBg.position = Input.mousePosition;
+        moveBackPos = JoystickControl.position;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -99,6 +87,7 @@ public class Joystick : MonoBehaviour, IDragHandler, IEndDragHandler{
         //拖拽结束时还原位置
         horizontal = JoystickControl.localPosition.x;
         vertical = JoystickControl.localPosition.y;
+        JoystickBg.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
